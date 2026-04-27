@@ -5,7 +5,7 @@
 const profile = {
   name: {
     ko: '이도근',
-    en: 'Lee Dogeun',
+    en: 'Lee Dokeun',
     short: '도근', // 프로필 사진이 없을 때 아바타에 표시
   },
 

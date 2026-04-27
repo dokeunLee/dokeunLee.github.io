@@ -1,7 +1,7 @@
 ---
 slug: TEMPLATE-paper-presentation
 title: "[Template] 논문 발표 회고"
-authors: [dogeun]
+authors: [dokeun]
 tags: [논문-발표]
 draft: true
 ---

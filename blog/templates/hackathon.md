@@ -1,7 +1,7 @@
 ---
 slug: TEMPLATE-hackathon
 title: "[Template] 해커톤 회고"
-authors: [dogeun]
+authors: [dokeun]
 tags: [해커톤]
 draft: true
 ---

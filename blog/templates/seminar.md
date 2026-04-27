@@ -1,7 +1,7 @@
 ---
 slug: TEMPLATE-seminar
 title: "[Template] 세미나 참석 회고"
-authors: [dogeun]
+authors: [dokeun]
 tags: [세미나]
 draft: true
 ---

@@ -1,7 +1,7 @@
 ---
 slug: TEMPLATE-retrospective
 title: "[Template] 주간/월간/학기 회고"
-authors: [dogeun]
+authors: [dokeun]
 tags: [회고]
 draft: true
 ---
