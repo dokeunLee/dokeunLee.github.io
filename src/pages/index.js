@@ -1,20 +1,42 @@
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
+import profile from '@site/src/data/profile';
+
+function Avatar() {
+  const photoUrl = useBaseUrl(profile.photo || '');
+  if (profile.photo) {
+    return (
+      <img
+        className={styles.avatar}
+        src={photoUrl}
+        alt={`${profile.name.ko} 프로필 사진`}
+      />
+    );
+  }
+  return (
+    <div className={styles.avatar} aria-hidden>
+      {profile.name.short}
+    </div>
+  );
+}
 
 function Hero() {
   return (
     <header className={styles.hero}>
       <div className="container">
         <div className={styles.profile}>
-          <div className={styles.avatar} aria-hidden>도근</div>
+          <Avatar />
           <div>
-            <span className={styles.kicker}>Master's Student · Since 2026</span>
+            <span className={styles.kicker}>
+              {profile.role.en} · Since {profile.since}
+            </span>
             <Heading as="h1" className={styles.name}>
-              이도근
-              <span className={styles.nameEn}>Lee Dogeun</span>
+              {profile.name.ko}
+              <span className={styles.nameEn}>{profile.name.en}</span>
             </Heading>
             <p className={styles.role}>
               석사과정 중 공부한 것과 경험한 것을 한 곳에 정리하고 있습니다.
@@ -45,35 +67,29 @@ function AboutSection() {
         </div>
         <div className={styles.aboutGrid}>
           <div className={styles.bio}>
-            <p>
-              안녕하세요, <b>이도근</b>입니다. 2001년생, 현재 석사과정에 재학 중입니다.
-            </p>
-            <p>
-              연구·수업에서 매일 새로 알게 되는 것들이 흩어져버리는 게 아쉬워서
-              이 사이트를 만들었습니다. 다시 찾아볼 가치가 있는 지식은 정리하고,
-              발표·세미나·해커톤 같은 경험은 회고로 남깁니다.
-            </p>
-            <p>
-              읽고, 정리하고, 만든 흔적이 시간과 함께 쌓이는 모습을 보고 싶습니다.
-            </p>
+            {profile.bio.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
           </div>
           <div className={styles.factList}>
             <div className={styles.fact}>
               <div className={styles.factLabel}>Status</div>
-              <div className={styles.factValue}>석사과정 재학 중</div>
+              <div className={styles.factValue}>{profile.role.ko}</div>
             </div>
             <div className={styles.fact}>
               <div className={styles.factLabel}>Born</div>
-              <div className={styles.factValue}>2001</div>
+              <div className={styles.factValue}>{profile.birthYear}</div>
             </div>
             <div className={styles.fact}>
               <div className={styles.factLabel}>Interests</div>
-              <div className={styles.factValue}>연구 · 학습 기록 · 협업</div>
+              <div className={styles.factValue}>{profile.interests}</div>
             </div>
             <div className={styles.fact}>
               <div className={styles.factLabel}>Contact</div>
               <div className={styles.factValue}>
-                <Link to="mailto:your-email@example.com">your-email@example.com</Link>
+                <Link to={`mailto:${profile.contact.email}`}>{profile.contact.email}</Link>
+                {' · '}
+                <Link to={profile.contact.github}>GitHub</Link>
               </div>
             </div>
           </div>
@@ -84,11 +100,6 @@ function AboutSection() {
 }
 
 function TimelineSection() {
-  const items = [
-    {when: '2026 –', what: '석사과정', sub: '지도교수 / 연구실 (편집해 주세요)'},
-    {when: '2020 – 2025', what: '학사 졸업', sub: '학교 / 전공'},
-    {when: '2001', what: '출생', sub: ''},
-  ];
   return (
     <section className={styles.section}>
       <div className="container">
@@ -97,7 +108,7 @@ function TimelineSection() {
           <p>간단한 이력. 자세한 내용은 향후 Blog · Docs로 채워나갑니다.</p>
         </div>
         <div className={styles.timeline}>
-          {items.map((it) => (
+          {profile.timeline.map((it) => (
             <div key={it.when} className={styles.timelineItem}>
               <div className={styles.timelineWhen}>{it.when}</div>
               <div className={styles.timelineWhat}>
@@ -232,7 +243,7 @@ export default function Home() {
   return (
     <Layout
       title={`${siteConfig.title}`}
-      description="이도근 — 석사과정 동안의 공부와 경험을 기록하는 공간"
+      description={`${profile.name.ko} — 석사과정 동안의 공부와 경험을 기록하는 공간`}
     >
       <Hero />
       <main>

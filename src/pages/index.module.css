@@ -21,8 +21,7 @@
   width: 140px;
   height: 140px;
   border-radius: 50%;
-  background:
-    linear-gradient(135deg, #6366f1, #a5b4fc);
+  background: linear-gradient(135deg, #6366f1, #a5b4fc);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,6 +31,12 @@
   letter-spacing: -0.02em;
   box-shadow: 0 12px 30px rgba(79, 70, 229, 0.25);
   user-select: none;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid var(--ifm-background-surface-color);
+}
+img.avatar {
+  background: var(--ifm-color-emphasis-200);
 }
 .kicker {
   display: inline-block;

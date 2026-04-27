@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.85" cy="0.15" r="0.5">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.05" cy="0.95" r="0.55">
+      <stop offset="0%" stop-color="#a5b4fc" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a5b4fc" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mono" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4338ca"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Monogram badge -->
+  <g transform="translate(80, 80)">
+    <rect width="120" height="120" rx="26" fill="url(#mono)"/>
+    <text x="60" y="68"
+          text-anchor="middle"
+          dominant-baseline="middle"
+          font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+          font-size="58"
+          font-weight="800"
+          fill="white"
+          letter-spacing="-2">DL</text>
+  </g>
+
+  <!-- Kicker -->
+  <text x="80" y="290"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="22"
+        font-weight="700"
+        fill="#a5b4fc"
+        letter-spacing="3">MASTER'S · STUDY &amp; NOTES</text>
+
+  <!-- Title (Korean) -->
+  <text x="80" y="370"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif"
+        font-size="76"
+        font-weight="800"
+        fill="#ffffff"
+        letter-spacing="-3">이도근</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="430"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif"
+        font-size="32"
+        font-weight="600"
+        fill="#cbd5e1"
+        letter-spacing="-0.5">Lee Dogeun</text>
+
+  <!-- Tagline -->
+  <text x="80" y="510"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif"
+        font-size="28"
+        font-weight="400"
+        fill="#94a3b8"
+        letter-spacing="-0.3">공부한 것과 경험한 것을 한 곳에 기록합니다.</text>
+
+  <!-- Bottom-right URL hint -->
+  <text x="1120" y="580"
+        text-anchor="end"
+        font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+        font-size="20"
+        font-weight="500"
+        fill="#64748b"
+        letter-spacing="0.5">github.com/dokeunLee</text>
+</svg>

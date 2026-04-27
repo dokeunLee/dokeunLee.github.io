@@ -7,17 +7,20 @@ import rehypeKatex from 'rehype-katex';
 const config = {
   title: '이도근 — Study & Notes',
   tagline: '공부한 것과 경험한 것을 기록합니다',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.svg',
 
   future: {
     v4: true,
   },
 
-  url: 'https://your-site.example.com',
-  baseUrl: '/',
+  // GitHub Pages 배포 기준: https://dokeunLee.github.io/dokeunLee/
+  url: 'https://dokeunLee.github.io',
+  baseUrl: '/dokeunLee/',
+  trailingSlash: false,
 
-  organizationName: 'your-github-id',
-  projectName: 'study-notes',
+  organizationName: 'dokeunLee',
+  projectName: 'dokeunLee',
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'warn',
   markdown: {
@@ -80,7 +83,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/social-card.png',
+      image: 'img/og-card.png',
+      metadata: [
+        {name: 'author', content: '이도근 (Lee Dogeun)'},
+        {name: 'keywords', content: '석사과정, 학습 기록, 논문 정리, 회고, Docusaurus'},
+        {property: 'og:locale', content: 'ko_KR'},
+        {name: 'twitter:card', content: 'summary_large_image'},
+      ],
       colorMode: {
         defaultMode: 'light',
         respectPrefersColorScheme: true,
