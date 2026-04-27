@@ -1,0 +1,29 @@
+논문-발표:
+  label: "논문 발표"
+  permalink: /논문-발표
+  description: "학회·연구실 내 논문 발표 회고"
+
+세미나:
+  label: "세미나"
+  permalink: /세미나
+  description: "참석한 세미나·콜로키움 정리"
+
+해커톤:
+  label: "해커톤"
+  permalink: /해커톤
+  description: "해커톤 참가 회고"
+
+학회:
+  label: "학회"
+  permalink: /학회
+  description: "학회 참가 및 발표"
+
+단체활동:
+  label: "단체 활동"
+  permalink: /단체활동
+  description: "스터디·동아리·연구실 행사 등"
+
+회고:
+  label: "회고"
+  permalink: /회고
+  description: "주간/월간/학기 단위 회고"

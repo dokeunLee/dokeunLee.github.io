@@ -1,0 +1,8 @@
+{
+  "label": "기술 학습",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "연구와 개발에 쓰는 도구·기법 정리. 다시 봐도 바로 쓸 수 있도록."
+  }
+}

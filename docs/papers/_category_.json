@@ -1,0 +1,8 @@
+{
+  "label": "논문 정리",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "읽은 논문의 요약, 핵심 아이디어, 한계, 후속 연구 방향을 기록합니다."
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "label": "강의 노트",
+  "position": 3,
+  "link": {
+    "type": "generated-index",
+    "description": "수강 과목의 핵심 개념과 과제 풀이 정리."
+  }
+}

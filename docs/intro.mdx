@@ -1,0 +1,51 @@
+---
+id: intro
+title: 시작하기
+sidebar_position: 1
+slug: /intro
+description: Study & Notes 사이트 사용법과 디렉토리 구조 안내
+---
+
+# 시작하기
+
+이 사이트는 석사과정 동안 **공부한 것 (Docs)** 과 **경험한 것 (Blog)** 을 분리해서 정리하는 공간입니다.
+
+## 무엇을 어디에 쓰나요?
+
+| 구분        | 위치    | 무엇을 쓰나                                       |
+|-------------|---------|---------------------------------------------------|
+| **Docs**    | `/docs` | 재사용 가능한 지식 — 논문 정리, 강의 노트, 기술 학습 |
+| **Blog**    | `/blog` | 휘발성 회고 — 논문 발표, 세미나, 해커톤, 학회 활동   |
+
+판단 기준: *나중에 다시 찾아볼 가치가 있는 지식인가?* → Docs.
+*그날의 경험과 감상인가?* → Blog.
+
+## 디렉토리 구조
+
+```text
+docs/
+├── papers/      논문 정리 (분야별 하위 폴더 자유롭게)
+├── courses/     강의 노트 (학기/과목별)
+├── topics/      기술 학습 (PyTorch, LaTeX, Git 등)
+└── templates/   복사해 쓸 템플릿
+
+blog/
+├── authors.yml  작성자 정보
+├── tags.yml     태그 정의
+└── YYYY-MM-DD-slug.md   회고록
+```
+
+## 새 글 시작하기
+
+1. **논문 정리** — [`templates/paper-summary`](./templates/paper-summary.md) 복사 → `docs/papers/<분야>/`에 붙여넣기
+2. **강의 노트** — [`templates/course-note`](./templates/course-note.md) 복사 → `docs/courses/<학기>/`
+3. **기술 학습** — [`templates/topic-note`](./templates/topic-note.md) 복사 → `docs/topics/<주제>/`
+4. **회고 작성** — `blog/templates/`의 템플릿을 보고 `blog/YYYY-MM-DD-제목.md`로 새 파일 생성
+
+## 로컬 실행
+
+```bash
+npm start          # 개발 서버 (http://localhost:3000)
+npm run build      # 정적 빌드
+npm run serve      # 빌드 결과 미리보기
+```
