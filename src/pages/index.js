@@ -233,7 +233,7 @@ function HowSection() {
           <div className={styles.howBlock}>
             <h3>📝 Blog</h3>
             <p>
-              그날의 경험과 결정. 발표·세미나·해커톤·학회 회고.
+              그날의 경험과 결정. 발표·세미나·해커톤·대외활동 회고.
             </p>
           </div>
         </div>
