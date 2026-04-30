@@ -185,6 +185,12 @@ const blogCards = [
     desc: '단기 협업에서 잘된 결정과 다시 안 할 결정.',
     to: '/blog/tags/해커톤',
   },
+  {
+    kicker: 'Blog · Activities',
+    title: '대외활동',
+    desc: '외부 활동에서 얻은 경험과 결과를 기록.',
+    to: '/blog/tags/대외활동',
+  },
 ];
 
 function BlogSection() {
@@ -193,7 +199,7 @@ function BlogSection() {
       <div className="container">
         <div className={styles.sectionHeader}>
           <h2>Records — 무엇을 경험했는가</h2>
-          <p>발표·세미나·해커톤·학회 등 그날의 경험을 회고로 남김.</p>
+          <p>발표·세미나·해커톤·학회 대외활동 등 그날의 경험을 회고로 남김.</p>
         </div>
         <div className={styles.cardGrid}>
           {blogCards.map((c) => (
