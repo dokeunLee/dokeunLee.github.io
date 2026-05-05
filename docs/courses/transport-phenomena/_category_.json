@@ -1,0 +1,8 @@
+{
+  "label": "Transport Phenomena",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Transport Phenomena 강의 노트: momentum, energy, mass transport의 기본 개념과 balance 풀이를 정리합니다."
+  }
+}
