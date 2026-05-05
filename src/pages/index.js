@@ -133,7 +133,7 @@ const docCards = [
   {
     kicker: 'Docs · Courses',
     title: '강의 노트',
-    desc: '수강 과목의 개념과 과제 풀이를 학기별로 정리.',
+    desc: '개념과 과제 풀이를 정리.',
     to: '/docs/category/강의-노트',
   },
   {
