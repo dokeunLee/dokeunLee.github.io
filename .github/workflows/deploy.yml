@@ -5,26 +5,26 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# GitHub Pages 배포에 필요한 권한
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# 동시에 여러 배포가 돌지 않도록 (in-progress 는 두고 다음 것만 큐에 대기)
 concurrency:
   group: pages
   cancel-in-progress: false
 
 jobs:
-  build:
-    name: Build
+  build-and-deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # showLastUpdateTime 가 git log 를 쓰므로 전체 히스토리 필요
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -43,14 +43,6 @@ jobs:
         with:
           path: build
 
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
