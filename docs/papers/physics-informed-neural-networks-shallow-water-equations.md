@@ -279,6 +279,4 @@ PINN은 다음과 같은 장점이 있다.
 
 ## 정리한 PPT
 
-- [Physics-Informed SWE Seminar Summary PDF 열기](/files/papers/physics-informed-swe-seminar-summary.pdf)
-
-> PDF 파일은 `static/files/papers/physics-informed-swe-seminar-summary.pdf` 경로에 두면 위 링크로 연결된다.
+- [Physics-Informed SWE Seminar Summary PDF 열기](/files/physics-informed-swe-seminar-summary.pdf)
