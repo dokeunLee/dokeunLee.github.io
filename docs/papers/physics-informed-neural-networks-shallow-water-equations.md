@@ -17,11 +17,7 @@ tags: [논문정리, PINN, Shallow-Water-Equations, 딥러닝, 수치해석]
 | 연도 | 2022 |
 | 주제 | PINN을 이용한 Shallow Water Equations 근사 |
 
-## 원문 PDF
 
-- [Physics-Informed SWE Seminar Summary PDF 열기](/files/papers/physics-informed-swe-seminar-summary.pdf)
-
-> PDF 파일은 `static/files/papers/physics-informed-swe-seminar-summary.pdf` 경로에 두면 위 링크로 연결된다.
 
 ## 읽은 목적
 
@@ -280,3 +276,9 @@ PINN은 다음과 같은 장점이 있다.
 ## 한 줄 정리
 
 이 논문은 PINN이 Shallow Water Equations에 적용될 수 있음을 보여주지만, shock, wet/dry front, friction, 2D 확장처럼 어려운 조건에서는 smoothing, 높은 학습 비용, hyperparameter 민감성이라는 한계를 함께 드러낸다.
+
+## 정리한 PPT
+
+- [Physics-Informed SWE Seminar Summary PDF 열기](/files/papers/physics-informed-swe-seminar-summary.pdf)
+
+> PDF 파일은 `static/files/papers/physics-informed-swe-seminar-summary.pdf` 경로에 두면 위 링크로 연결된다.
