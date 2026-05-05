@@ -19,27 +19,9 @@ tags: [논문정리, PINN, Shallow-Water-Equations, 딥러닝, 수치해석]
 
 ## 원문 PDF
 
-이 노트는 아래 PDF를 바탕으로 정리했다.
+- [Physics-Informed SWE Seminar Summary PDF 열기](/files/papers/physics-informed-swe-seminar-summary.pdf)
 
-```text
-static/files/papers/physics-informed-swe-seminar-summary.pdf
-```
-
-PDF 파일을 위 경로에 넣으면 배포 후 다음 주소에서 열 수 있다.
-
-```text
-/files/papers/physics-informed-swe-seminar-summary.pdf
-```
-
-<div style={{width: '100%', height: '720px', border: '1px solid var(--ifm-color-emphasis-300)', borderRadius: '8px', overflow: 'hidden'}}>
-  <iframe
-    src="/files/papers/physics-informed-swe-seminar-summary.pdf"
-    title="Physics-Informed SWE Seminar Summary PDF"
-    width="100%"
-    height="720px"
-    style={{border: '0'}}
-  />
-</div>
+> PDF 파일은 `static/files/papers/physics-informed-swe-seminar-summary.pdf` 경로에 두면 위 링크로 연결된다.
 
 ## 읽은 목적
 
