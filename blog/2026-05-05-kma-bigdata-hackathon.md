@@ -3,7 +3,6 @@ title: "2026 기상청 빅데이터 콘테스트 진행중"
 slug: kma-bigdata-hackathon-2026
 authors: [dokeun]
 tags: [해커톤, 기상청, 빅데이터, PINN]
-date: 2026-05-05
 ---
 
 # 2026 기상청 빅데이터 콘테스트 진행중
