@@ -182,7 +182,7 @@ const blogCards = [
   {
     kicker: 'Blog · Hackathon',
     title: '해커톤',
-    desc: '단기 협업에서 잘된 결정과 다시 안 할 결정.',
+    desc: '진행한 프로젝트를 정.',
     to: '/blog/tags/해커톤',
   },
   {
