@@ -183,7 +183,7 @@ const blogCards = [
     kicker: 'Blog · Hackathon',
     title: '해커톤',
     desc: '진행한 프로젝트를 정리.',
-    to: '/blog/kma-bigdata-hackathon-2026',
+    to: '/blog/tags/해커톤',
   },
   {
     kicker: 'Blog · Activities',
