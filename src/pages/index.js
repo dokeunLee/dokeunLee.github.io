@@ -182,7 +182,7 @@ const blogCards = [
   {
     kicker: 'Blog · Hackathon',
     title: '해커톤',
-    desc: 'LG Aimers 7기 식음업장 메뉴 수요 예측 AI 온라인 해커톤을 개인으로 진행하며 시계열 데이터 기반 수요예측 모델을 구현.',
+    desc: '진행한 프로젝트를 정리.',
     to: '/blog/tags/해커톤',
   },
   {
