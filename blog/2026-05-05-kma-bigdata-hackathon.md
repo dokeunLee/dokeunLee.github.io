@@ -1,6 +1,5 @@
 ---
 title: "2026 기상청 빅데이터 콘테스트 진행중"
-description: "PINN을 활용한 전력설비 인근 화재발생지수 예측 프로젝트 진행 기록"
 slug: kma-bigdata-hackathon-2026
 authors: [dokeun]
 tags: [해커톤, 기상청, 빅데이터, PINN]
