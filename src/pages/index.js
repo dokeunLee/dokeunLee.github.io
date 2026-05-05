@@ -182,7 +182,7 @@ const blogCards = [
   {
     kicker: 'Blog · Hackathon',
     title: '해커톤',
-    desc: '기상청 빅데이터 콘테스트를 진행하며 문제 정의·데이터 활용·모델링 과정을 기록.',
+    desc: 'LG Aimers 7기 식음업장 메뉴 수요 예측 AI 온라인 해커톤을 개인으로 진행하며 시계열 데이터 기반 수요예측 모델을 구현.',
     to: '/blog/tags/해커톤',
   },
   {
