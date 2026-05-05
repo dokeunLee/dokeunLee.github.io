@@ -11,6 +11,11 @@ permissions:
   pages: write
   id-token: write
 
+# 동시에 여러 배포가 돌지 않도록 (in-progress 는 두고 다음 것만 큐에 대기)
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     name: Build
@@ -44,6 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
