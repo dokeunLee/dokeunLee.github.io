@@ -3,6 +3,7 @@ slug: kma-bigdata-contest-2026
 title: "2026 기상청 빅데이터 콘테스트 진행중"
 authors: [dokeun]
 tags: [해커톤, 기상청, 빅데이터, AI, PINN]
+date: 2026-05-01
 ---
 
 ## 행사 정보
