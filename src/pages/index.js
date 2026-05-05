@@ -182,7 +182,7 @@ const blogCards = [
   {
     kicker: 'Blog · Hackathon',
     title: '해커톤',
-    desc: '진행한 프로젝트를 정.',
+    desc: '진행한 프로젝트를 정리.',
     to: '/blog/tags/해커톤',
   },
   {
