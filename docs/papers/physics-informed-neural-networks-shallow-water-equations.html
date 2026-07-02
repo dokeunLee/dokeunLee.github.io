@@ -1,0 +1,163 @@
+<!doctype html><html lang=ko dir=ltr class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-papers/physics-informed-neural-networks-shallow-water-equations" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content="Docusaurus v3.10.0"><title data-rh=true>Physics-Informed Neural Networks for Shallow Water Equations | 이도근 — Study & Notes</title><meta data-rh=true name=viewport content="width=device-width, initial-scale=1.0"/><meta data-rh=true property=og:image content=https://dokeunLee.github.io/img/og-card.png /><meta data-rh=true name=twitter:image content=https://dokeunLee.github.io/img/og-card.png /><meta data-rh=true property=og:url content=https://dokeunLee.github.io/docs/papers/physics-informed-neural-networks-shallow-water-equations /><meta data-rh=true name=docusaurus_locale content=ko /><meta data-rh=true name=docsearch:language content=ko /><meta data-rh=true name=author content="이도근 (Lee Dokeun)"/><meta data-rh=true name=keywords content="석사과정, 학습 기록, 논문 정리, 회고, Docusaurus"/><meta data-rh=true property=og:locale content=ko_KR /><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true name=docusaurus_version content=current /><meta data-rh=true name=docusaurus_tag content=docs-default-current /><meta data-rh=true name=docsearch:version content=current /><meta data-rh=true name=docsearch:docusaurus_tag content=docs-default-current /><meta data-rh=true property=og:title content="Physics-Informed Neural Networks for Shallow Water Equations | 이도근 — Study & Notes"/><meta data-rh=true name=description content="Shallow Water Equations에 PINN을 적용한 논문을 읽고, 물리 제약 기반 신경망의 가능성과 한계를 정리한 노트"/><meta data-rh=true property=og:description content="Shallow Water Equations에 PINN을 적용한 논문을 읽고, 물리 제약 기반 신경망의 가능성과 한계를 정리한 노트"/><link data-rh=true rel=icon href=/img/favicon.svg /><link data-rh=true rel=canonical href=https://dokeunLee.github.io/docs/papers/physics-informed-neural-networks-shallow-water-equations /><link data-rh=true rel=alternate href=https://dokeunLee.github.io/docs/papers/physics-informed-neural-networks-shallow-water-equations hreflang=ko /><link data-rh=true rel=alternate href=https://dokeunLee.github.io/docs/papers/physics-informed-neural-networks-shallow-water-equations hreflang=x-default /><script data-rh=true type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://dokeunLee.github.io/docs/category/논문-정리","name":"논문 정리","position":1},{"@type":"ListItem","item":"https://dokeunLee.github.io/docs/papers/physics-informed-neural-networks-shallow-water-equations","name":"Physics-Informed Neural Networks for Shallow Water Equations","position":2}]}</script><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="이도근 — Study & Notes RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="이도근 — Study & Notes Atom Feed"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css type=text/css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><link rel=stylesheet href=/assets/css/styles.26fadea3.css /><script src=/assets/js/runtime~main.2cbd9633.js defer></script><script src=/assets/js/main.55bf7309.js defer></script></head><body><svg style="display: none;"><defs>
+<symbol id=theme-svg-external-link viewBox="0 0 24 24"><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme-dd1")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id=__docusaurus><link rel=preload as=image href=/img/logo.svg /><div role=region aria-label="본문으로 건너뛰기"><a class=skipToContent_fXgn href=#__docusaurus_skipToContent_fallback>본문으로 건너뛰기</a></div><nav aria-label=메인 class="theme-layout-navbar navbar navbar--fixed-top"><div class=navbar__inner><div class="theme-layout-navbar-left navbar__items"><button aria-label="사이드바 펼치거나 접기" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.svg alt="Lee Dokeun" class="themedComponent_mlkZ themedComponent--light_NVdE"/><img src=/img/logo.svg alt="Lee Dokeun" class="themedComponent_mlkZ themedComponent--dark_xIcU"/></div><b class="navbar__title text--truncate">이도근</b></a><a class="navbar__item navbar__link" href=/>About</a><a aria-current=page class="navbar__item navbar__link navbar__link--active" href=/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/blog>Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type=button disabled title="system mode" aria-label="어두운 모드와 밝은 모드 전환하기 (현재 system mode)"><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 aria-hidden=true class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill=currentColor d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"/></svg></button></div><div class=navbarSearchContainer_Bca1></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class=docsWrapper_hBAB><button aria-label="맨 위로 스크롤하기" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type=button></button><div class=docRoot_UBD9><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class=sidebarViewport_aRkj><div class=sidebar_njMd><nav aria-label="문서 사이드바" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class=menu__link href=/docs/intro><span title=시작하기 class=linkLabel_WmDU>시작하기</span></a><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href=/docs/category/논문-정리><span title="논문 정리" class=categoryLinkLabel_W154>논문 정리</span></a><button aria-label="사이드바 분류 '논문 정리' 접기" aria-expanded=true type=button class="clean-btn menu__caret"></button></div><ul class=menu__list><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current=page tabindex=0 href=/docs/papers/physics-informed-neural-networks-shallow-water-equations><span title="Physics-Informed Neural Networks for Shallow Water Equations" class=linkLabel_WmDU>Physics-Informed Neural Networks for Shallow Water Equations</span></a><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class=menu__link tabindex=0 href=/docs/papers/example-attention-is-all-you-need><span title="Attention Is All You Need (예시)" class=linkLabel_WmDU>Attention Is All You Need (예시)</span></a></ul><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/docs/category/강의-노트><span title="강의 노트" class=categoryLinkLabel_W154>강의 노트</span></a><button aria-label="사이드바 분류 '강의 노트' 펼치기" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/docs/category/기술-학습><span title="기술 학습" class=categoryLinkLabel_W154>기술 학습</span></a><button aria-label="사이드바 분류 '기술 학습' 펼치기" aria-expanded=false type=button class="clean-btn menu__caret"></button></div><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class=menu__list-item-collapsible><a class="categoryLink_byQd menu__link menu__link--sublist" href=/docs/category/templates><span title=템플릿 class=categoryLinkLabel_W154>템플릿</span></a><button aria-label="사이드바 분류 '템플릿' 펼치기" aria-expanded=false type=button class="clean-btn menu__caret"></button></div></ul></nav><button type=button title="사이드바 숨기기" aria-label="사이드바 숨기기" class="button button--secondary button--outline collapseSidebarButton_PEFL"><svg width=20 height=20 aria-hidden=true class=collapseSidebarButtonIcon_kv0_><g fill=#7a7a7a><path d="M9.992 10.023c0 .2-.062.399-.172.547l-4.996 7.492a.982.982 0 01-.828.454H1c-.55 0-1-.453-1-1 0-.2.059-.403.168-.551l4.629-6.942L.168 3.078A.939.939 0 010 2.528c0-.548.45-.997 1-.997h2.996c.352 0 .649.18.828.45L9.82 9.472c.11.148.172.347.172.55zm0 0"/><path d="M19.98 10.023c0 .2-.058.399-.168.547l-4.996 7.492a.987.987 0 01-.828.454h-3c-.547 0-.996-.453-.996-1 0-.2.059-.403.168-.551l4.625-6.942-4.625-6.945a.939.939 0 01-.168-.55 1 1 0 01.996-.997h3c.348 0 .649.18.828.45l4.996 7.492c.11.148.168.347.168.55zm0 0"/></g></svg></button></div></div></aside><main class=docMainContainer_TBSr><div class="container padding-top--md padding-bottom--lg"><div class=row><div class="col docItemCol_VOVn"><div class=docItemContainer_Djhp><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="탐색 경로"><ul class=breadcrumbs><li class=breadcrumbs__item><a aria-label=홈 class=breadcrumbs__link href=/><svg viewBox="0 0 24 24" class=breadcrumbHomeIcon_YNFT><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill=currentColor /></svg></a><li class=breadcrumbs__item><a class=breadcrumbs__link href=/docs/category/논문-정리><span>논문 정리</span></a><li class="breadcrumbs__item breadcrumbs__item--active"><span class=breadcrumbs__link>Physics-Informed Neural Networks for Shallow Water Equations</span></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type=button class="clean-btn tocCollapsibleButton_TO0P">이 페이지에서</button></div><div class="theme-doc-markdown markdown"><header><h1>Physics-Informed Neural Networks for Shallow Water Equations</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=논문-정보>논문 정보<a href=#논문-정보 class=hash-link aria-label="논문 정보에 대한 직접 링크" title="논문 정보에 대한 직접 링크" translate=no>​</a></h2>
+<table><thead><tr><th>항목<th>내용<tbody><tr><td>논문 제목<td>Physics-Informed Neural Networks for Shallow Water Equations<tr><td>저자<td>Riccardo Anelli<tr><td>소속<td>Politecnico di Milano<tr><td>연도<td>2022<tr><td>주제<td>PINN을 이용한 Shallow Water Equations 근사</table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=읽은-목적>읽은 목적<a href=#읽은-목적 class=hash-link aria-label="읽은 목적에 대한 직접 링크" title="읽은 목적에 대한 직접 링크" translate=no>​</a></h2>
+<p>이 논문은 **Physics-Informed Neural Networks(PINN)**가 **Shallow Water Equations(SWE)**를 근사하는 데 얼마나 유효한지 단계적으로 평가한다.</p>
+<p>특히 단순히 PINN을 적용했다는 점보다, 다음 문제군에서 PINN이 어떤 수준까지 작동하는지를 확인하는 데 초점이 있다.</p>
+<ul>
+<li class="">steady-state 문제</li>
+<li class="">transient 문제</li>
+<li class="">parametric many-query 문제</li>
+<li class="">2D shallow water 문제</li>
+</ul>
+<p>따라서 이 논문은 PINN의 개념을 이해하는 데서 끝나는 것이 아니라, <strong>쌍곡형 PDE와 수치해석 benchmark 문제에 PINN을 적용할 때 어떤 가능성과 한계가 생기는지</strong>를 보는 데 의미가 있다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=핵심-문제의식>핵심 문제의식<a href=#핵심-문제의식 class=hash-link aria-label="핵심 문제의식에 대한 직접 링크" title="핵심 문제의식에 대한 직접 링크" translate=no>​</a></h2>
+<p>Shallow Water Equations는 수심이 얕은 유체 흐름을 기술하는 PDE다.</p>
+<p>댐 붕괴, 홍수, 하천 흐름과 같은 문제를 단순화해 다룰 수 있으며, 보존형 방정식 구조를 갖는다.</p>
+<p>논문에서 다루는 핵심 질문은 다음과 같다.</p>
+<blockquote>
+<p>PINN이 Shallow Water Equations의 해를 기존 수치해석법처럼 안정적으로 근사할 수 있는가?</p>
+</blockquote>
+<p>여기서 중요한 점은 SWE가 비교적 까다로운 PDE라는 것이다.</p>
+<ul>
+<li class="">shock wave가 나타날 수 있음</li>
+<li class="">wet/dry transition이 존재함</li>
+<li class="">friction term과 topography source term이 들어감</li>
+<li class="">1D뿐 아니라 2D 확장이 필요함</li>
+<li class="">parameter가 바뀌는 many-query setting도 고려해야 함</li>
+</ul>
+<p>따라서 이 논문은 PINN이 단순한 toy problem을 넘어 실제 수리·유체 문제에 적용될 수 있는지를 검증하는 성격을 갖는다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=논문-전체-구조>논문 전체 구조<a href=#논문-전체-구조 class=hash-link aria-label="논문 전체 구조에 대한 직접 링크" title="논문 전체 구조에 대한 직접 링크" translate=no>​</a></h2>
+<p>논문은 다음 흐름으로 전개된다.</p>
+<table><thead><tr><th>구분<th>내용<tbody><tr><td>Introduction<td>논문 목적과 문제의식 소개<tr><td>Chapter 1<td>Shallow Water Equations의 물리적·수학적 배경<tr><td>Chapter 2<td>ANN, 손실 함수, 자동미분 등 머신러닝 최소 배경<tr><td>Chapter 3<td>PINN 알고리즘, 오차 분석, 코드 검증<tr><td>Chapter 4<td>Steady, transient, parametric, 2D 실험 결과</table>
+<p>즉, 논문은 수학 모델을 먼저 설명하고, 그다음 PINN을 구성한 뒤, 다양한 SWE benchmark 문제에 적용하는 방식으로 전개된다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-1-swe의-물리적-가정>학습한 내용 1. SWE의 물리적 가정<a href=#학습한-내용-1-swe의-물리적-가정 class=hash-link aria-label="학습한 내용 1. SWE의 물리적 가정에 대한 직접 링크" title="학습한 내용 1. SWE의 물리적 가정에 대한 직접 링크" translate=no>​</a></h2>
+<p>이 논문을 통해 SWE가 단순히 물을 얕게 본다는 의미가 아니라, 여러 물리적 가정을 바탕으로 만들어진 모델이라는 점을 이해했다.</p>
+<p>주요 가정은 다음과 같다.</p>
+<ul>
+<li class="">shallow water assumption</li>
+<li class="">hydrostatic pressure assumption</li>
+<li class="">vertical velocity와 vertical acceleration 무시</li>
+<li class="">2D depth-averaged flow</li>
+<li class="">incompressible fluid</li>
+<li class="">continuum assumption</li>
+</ul>
+<p>SWE에서는 3차원 유체 운동을 그대로 푸는 것이 아니라, 수직 방향 정보를 평균화해 상대적으로 단순한 2D 흐름으로 표현한다.</p>
+<p>즉, 복잡한 유체 문제를 계산 가능한 수준으로 낮추기 위해 물리적 가정을 두고, 그 결과 수심과 유속 중심의 방정식이 만들어진다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-2-swe의-수학적-구조>학습한 내용 2. SWE의 수학적 구조<a href=#학습한-내용-2-swe의-수학적-구조 class=hash-link aria-label="학습한 내용 2. SWE의 수학적 구조에 대한 직접 링크" title="학습한 내용 2. SWE의 수학적 구조에 대한 직접 링크" translate=no>​</a></h2>
+<p>SWE는 보존형 벡터 방정식 형태로 표현된다.</p>
+<p>상태 벡터, 플럭스 벡터, 소스항을 이용해 다음과 같은 구조를 갖는다.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-text codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><div class=token-line style=color:#393A34><span class="token plain">시간 변화 + x방향 플럭스 변화 + y방향 플럭스 변화 = 소스항</span><br/></div></code></pre></div></div>
+<p>여기서 상태 벡터는 수심과 운동량 성분을 포함한다.</p>
+<ul>
+<li class="">h: 수심</li>
+<li class="">qx: x방향 discharge 또는 momentum 성분</li>
+<li class="">qy: y방향 discharge 또는 momentum 성분</li>
+</ul>
+<p>소스항에는 지형 경사와 바닥 마찰이 포함될 수 있다.</p>
+<p>논문에서는 다음 요소들이 중요하게 다뤄진다.</p>
+<ul>
+<li class="">topography</li>
+<li class="">friction</li>
+<li class="">Manning-Strickler law</li>
+<li class="">Darcy-Weisbach law</li>
+<li class="">Froude number</li>
+</ul>
+<p>이를 통해 SWE는 단순한 물높이 예측 문제가 아니라, <strong>보존법칙, 플럭스, 소스항, 경계조건이 결합된 PDE 시스템</strong>이라는 점을 이해할 수 있었다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-3-pinn에서-scaling이-중요한-이유>학습한 내용 3. PINN에서 scaling이 중요한 이유<a href=#학습한-내용-3-pinn에서-scaling이-중요한-이유 class=hash-link aria-label="학습한 내용 3. PINN에서 scaling이 중요한 이유에 대한 직접 링크" title="학습한 내용 3. PINN에서 scaling이 중요한 이유에 대한 직접 링크" translate=no>​</a></h2>
+<p>논문에서 특히 중요하게 본 부분은 scaling이다.</p>
+<p>SWE는 공간 스케일, 시간 스케일, 해의 크기가 문제마다 크게 달라질 수 있다.</p>
+<p>반면 신경망은 일반적으로 O(1) 규모의 입력과 출력에서 더 안정적으로 학습된다.</p>
+<p>따라서 물리 문제를 그대로 넣는 것이 아니라, 신경망이 학습하기 쉬운 크기로 변환하는 scaling이 필요하다.</p>
+<p>이 부분을 통해 다음 점을 이해했다.</p>
+<blockquote>
+<p>PINN에서 scaling은 단순한 형식 변환이 아니라 학습 안정성을 좌우하는 전처리다.</p>
+</blockquote>
+<p>즉, PDE residual을 loss에 넣는다고 자동으로 좋은 학습이 되는 것이 아니라, 변수 크기와 손실 항의 균형을 맞추는 과정이 필요하다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-4-pinn의-기본-작동-방식>학습한 내용 4. PINN의 기본 작동 방식<a href=#학습한-내용-4-pinn의-기본-작동-방식 class=hash-link aria-label="학습한 내용 4. PINN의 기본 작동 방식에 대한 직접 링크" title="학습한 내용 4. PINN의 기본 작동 방식에 대한 직접 링크" translate=no>​</a></h2>
+<p>PINN은 neural network를 PDE 해의 surrogate model로 둔다.</p>
+<p>일반적인 supervised learning처럼 정답 데이터만 맞추는 것이 아니라, PDE residual을 손실 함수에 포함한다.</p>
+<p>기본 흐름은 다음과 같다.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_QJqH><pre tabindex=0 class="prism-code language-text codeBlock_bY9V thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_e6Vv><div class=token-line style=color:#393A34><span class="token plain">training point 설정</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">↓</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">network output 계산</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">↓</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">automatic differentiation으로 편미분 계산</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">↓</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">PDE residual 계산</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">↓</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">boundary condition / initial condition residual 계산</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">↓</span><br/></div><div class=token-line style=color:#393A34><span class="token plain">loss minimization</span><br/></div></code></pre></div></div>
+<p>이때 자동미분은 핵심 역할을 한다.</p>
+<p>PINN에서는 네트워크 출력의 공간·시간 편미분이 필요하고, 이 편미분을 PDE residual 계산에 직접 사용한다.</p>
+<p>따라서 PINN은 단순히 데이터를 맞추는 모델이 아니라, <strong>미분 가능한 신경망 함수를 PDE 해로 보고 그 함수가 방정식을 만족하도록 학습시키는 방법</strong>이다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-5-pinn의-오차를-보는-관점>학습한 내용 5. PINN의 오차를 보는 관점<a href=#학습한-내용-5-pinn의-오차를-보는-관점 class=hash-link aria-label="학습한 내용 5. PINN의 오차를 보는 관점에 대한 직접 링크" title="학습한 내용 5. PINN의 오차를 보는 관점에 대한 직접 링크" translate=no>​</a></h2>
+<p>논문에서 오차는 단순히 예측값과 정답의 차이로만 보지 않는다.</p>
+<p>PINN의 총 오차는 여러 요소로 나뉜다.</p>
+<ul>
+<li class="">approximation error</li>
+<li class="">optimization error</li>
+<li class="">generalization error</li>
+</ul>
+<p>이를 통해 PDE residual이 작다고 해서 실제 해와 항상 가까운 것은 아니라는 점을 이해했다.</p>
+<p>즉, PINN에서 loss가 작다는 것은 좋은 신호지만, 그것만으로 해의 정확성을 완전히 보장하지는 않는다.</p>
+<p>특히 collocation point의 배치, 네트워크 깊이와 너비, 학습률, optimizer, loss weight 같은 hyperparameter가 결과에 큰 영향을 준다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-6-실험-구성과-benchmark-문제>학습한 내용 6. 실험 구성과 benchmark 문제<a href=#학습한-내용-6-실험-구성과-benchmark-문제 class=hash-link aria-label="학습한 내용 6. 실험 구성과 benchmark 문제에 대한 직접 링크" title="학습한 내용 6. 실험 구성과 benchmark 문제에 대한 직접 링크" translate=no>​</a></h2>
+<p>논문은 SWE에 대해 여러 종류의 benchmark 문제를 구성한다.</p>
+<table><thead><tr><th>문제군<th>검증 내용<tbody><tr><td>Steady-state problems<td>hydrostatic equilibrium, wet/dry transition, boundary condition 포함 steady solution<tr><td>Wet domain dam break<td>shock wave와 rarefaction wave 재현<tr><td>Dry domain dam break<td>moving wet/dry front 재현<tr><td>Friction cases<td>friction term이 포함된 transient structure<tr><td>Parametric cases<td>friction coefficient 또는 gravity를 network input으로 포함<tr><td>2D circular dam break<td>2D SWE 확장과 대칭 구조 유지</table>
+<p>특히 dam-break 문제는 hyperbolic PDE에서 나타나는 shock, rarefaction, dry front를 확인할 수 있는 대표적 benchmark다.</p>
+<p>이를 통해 PINN이 단순한 정적 문제뿐 아니라 시간의존적이고 불연속성이 강한 문제에서도 어느 정도 구조를 재현할 수 있는지 확인한다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=학습한-내용-7-pinn이-shock를-근사하는-방식>학습한 내용 7. PINN이 shock를 근사하는 방식<a href=#학습한-내용-7-pinn이-shock를-근사하는-방식 class=hash-link aria-label="학습한 내용 7. PINN이 shock를 근사하는 방식에 대한 직접 링크" title="학습한 내용 7. PINN이 shock를 근사하는 방식에 대한 직접 링크" translate=no>​</a></h2>
+<p>가장 중요하게 이해한 부분은 PINN이 shock를 다루는 방식이다.</p>
+<p>PINN은 neural network로 해를 연속적이고 미분가능한 함수로 표현한다.</p>
+<p>따라서 shock처럼 급격한 discontinuity가 있는 문제에서는 sharp discontinuity를 그대로 표현하기보다, 부드러운 형태로 근사하는 경향이 있다.</p>
+<p>논문 결과의 경향은 다음과 같이 정리할 수 있다.</p>
+<table><thead><tr><th>항목<th>PINN 결과 경향<tbody><tr><td>shock 위치<td>비교적 잘 재현<tr><td>전체 wave structure<td>전반적으로 유지<tr><td>급격한 gradient<td>reference보다 smooth하게 근사<tr><td>dry front / friction 포함 case<td>구조는 유지하지만 sharpness가 약화될 수 있음</table>
+<p>즉, PINN은 SWE에 적용 가능성을 보이지만, hyperbolic PDE의 sharp gradient를 정밀하게 재현하는 데에는 한계가 있다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=논문을-통해-이해한-점>논문을 통해 이해한 점<a href=#논문을-통해-이해한-점 class=hash-link aria-label="논문을 통해 이해한 점에 대한 직접 링크" title="논문을 통해 이해한 점에 대한 직접 링크" translate=no>​</a></h2>
+<p>이 논문을 읽고 가장 크게 이해한 점은 다음이다.</p>
+<blockquote>
+<p>PINN은 기존 수치해석법을 바로 대체하는 기술이라기보다, 물리 제약을 가진 surrogate model 또는 보완적 도구로 보는 것이 타당하다.</p>
+</blockquote>
+<p>PINN은 다음과 같은 장점이 있다.</p>
+<ul>
+<li class="">PDE residual을 loss에 포함해 물리 제약을 반영할 수 있음</li>
+<li class="">데이터가 부족한 상황에서 물리 모델을 활용할 수 있음</li>
+<li class="">parameter를 입력으로 포함해 many-query 문제에 활용할 수 있음</li>
+<li class="">미분 가능한 surrogate solution을 얻을 수 있음</li>
+</ul>
+<p>하지만 다음 한계도 분명하다.</p>
+<ul>
+<li class="">training cost가 높음</li>
+<li class="">hyperparameter tuning이 어렵고 trial-and-error에 의존함</li>
+<li class="">scaling과 loss balancing이 중요함</li>
+<li class="">shock나 dry front처럼 급격한 변화가 있는 문제에서 smoothing이 발생함</li>
+<li class="">FEM, FVM, FDM 같은 전통 수치해석법의 안정성과 정확도를 바로 대체하기는 어려움</li>
+</ul>
+<p>따라서 PINN은 “수치해석법의 대체재”라기보다, <strong>빠른 surrogate modeling, parameter study, inverse problem, data assimilation 같은 영역에서 보완적으로 활용될 가능성이 크다</strong>고 이해했다.</p>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=내-학습과의-연결>내 학습과의 연결<a href=#내-학습과의-연결 class=hash-link aria-label="내 학습과의 연결에 대한 직접 링크" title="내 학습과의 연결에 대한 직접 링크" translate=no>​</a></h2>
+<p>내가 물리학과 컴퓨터학을 함께 공부하는 입장에서, 이 논문은 두 분야가 만나는 지점을 보여준다.</p>
+<p>물리학 관점에서는 SWE의 가정, 보존법칙, 플럭스, 소스항, boundary condition을 이해해야 한다.</p>
+<p>컴퓨터학 관점에서는 neural network, loss function, automatic differentiation, optimization, generalization을 이해해야 한다.</p>
+<p>즉, PINN 연구는 단순히 딥러닝 모델을 적용하는 문제가 아니라, <strong>물리 모델과 학습 알고리즘을 동시에 이해해야 하는 문제</strong>다.</p>
+<p>이 논문을 통해 앞으로 PINN을 공부할 때 다음 순서가 중요하다고 느꼈다.</p>
+<ol>
+<li class="">대상 PDE의 물리적 가정과 수학적 구조를 먼저 이해한다.</li>
+<li class="">어떤 항을 residual loss에 넣을지 명확히 정한다.</li>
+<li class="">scaling과 nondimensionalization을 신중하게 설계한다.</li>
+<li class="">benchmark 문제로 코드가 제대로 작동하는지 검증한다.</li>
+<li class="">loss 감소뿐 아니라 reference solution과의 구조적 차이를 함께 본다.</li>
+<li class="">PINN의 결과를 기존 수치해석법과 비교하면서 해석한다.</li>
+</ol>
+<hr/>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=한-줄-정리>한 줄 정리<a href=#한-줄-정리 class=hash-link aria-label="한 줄 정리에 대한 직접 링크" title="한 줄 정리에 대한 직접 링크" translate=no>​</a></h2>
+<p>이 논문은 PINN이 Shallow Water Equations에 적용될 수 있음을 보여주지만, shock, wet/dry front, friction, 2D 확장처럼 어려운 조건에서는 smoothing, 높은 학습 비용, hyperparameter 민감성이라는 한계를 함께 드러낸다.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id=정리한-ppt>정리한 PPT<a href=#정리한-ppt class=hash-link aria-label="정리한 PPT에 대한 직접 링크" title="정리한 PPT에 대한 직접 링크" translate=no>​</a></h2>
+<ul>
+<li class=""><a href=/assets/files/physics-informed-swe-seminar-summary-7c97a3d2cbe998584dcfdb687959ea37.pdf target=_blank class="">Physics-Informed SWE Seminar Summary PDF 열기</a></li>
+</ul></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class=col><b>태그:</b><ul class="tags_jXut padding--none margin-left--sm"><li class=tag_QGVx><a rel=tag class="tag_zVej tagRegular_sFm0" href=/docs/tags/논문정리>논문정리</a><li class=tag_QGVx><a rel=tag class="tag_zVej tagRegular_sFm0" href=/docs/tags/pinn>PINN</a><li class=tag_QGVx><a rel=tag class="tag_zVej tagRegular_sFm0" href=/docs/tags/shallow-water-equations>Shallow-Water-Equations</a><li class=tag_QGVx><a rel=tag class="tag_zVej tagRegular_sFm0" href=/docs/tags/딥러닝>딥러닝</a><li class=tag_QGVx><a rel=tag class="tag_zVej tagRegular_sFm0" href=/docs/tags/수치해석>수치해석</a></ul></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="문서 페이지"><a class="pagination-nav__link pagination-nav__link--prev" href=/docs/category/논문-정리><div class=pagination-nav__sublabel>이전</div><div class=pagination-nav__label>논문 정리</div></a><a class="pagination-nav__link pagination-nav__link--next" href=/docs/papers/example-attention-is-all-you-need><div class=pagination-nav__sublabel>다음</div><div class=pagination-nav__label>Attention Is All You Need (예시)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#논문-정보 class="table-of-contents__link toc-highlight">논문 정보</a><li><a href=#읽은-목적 class="table-of-contents__link toc-highlight">읽은 목적</a><li><a href=#핵심-문제의식 class="table-of-contents__link toc-highlight">핵심 문제의식</a><li><a href=#논문-전체-구조 class="table-of-contents__link toc-highlight">논문 전체 구조</a><li><a href=#학습한-내용-1-swe의-물리적-가정 class="table-of-contents__link toc-highlight">학습한 내용 1. SWE의 물리적 가정</a><li><a href=#학습한-내용-2-swe의-수학적-구조 class="table-of-contents__link toc-highlight">학습한 내용 2. SWE의 수학적 구조</a><li><a href=#학습한-내용-3-pinn에서-scaling이-중요한-이유 class="table-of-contents__link toc-highlight">학습한 내용 3. PINN에서 scaling이 중요한 이유</a><li><a href=#학습한-내용-4-pinn의-기본-작동-방식 class="table-of-contents__link toc-highlight">학습한 내용 4. PINN의 기본 작동 방식</a><li><a href=#학습한-내용-5-pinn의-오차를-보는-관점 class="table-of-contents__link toc-highlight">학습한 내용 5. PINN의 오차를 보는 관점</a><li><a href=#학습한-내용-6-실험-구성과-benchmark-문제 class="table-of-contents__link toc-highlight">학습한 내용 6. 실험 구성과 benchmark 문제</a><li><a href=#학습한-내용-7-pinn이-shock를-근사하는-방식 class="table-of-contents__link toc-highlight">학습한 내용 7. PINN이 shock를 근사하는 방식</a><li><a href=#논문을-통해-이해한-점 class="table-of-contents__link toc-highlight">논문을 통해 이해한 점</a><li><a href=#내-학습과의-연결 class="table-of-contents__link toc-highlight">내 학습과의 연결</a><li><a href=#한-줄-정리 class="table-of-contents__link toc-highlight">한 줄 정리</a><li><a href=#정리한-ppt class="table-of-contents__link toc-highlight">정리한 PPT</a></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Knowledge</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/intro>시작하기</a><li class=footer__item><a class=footer__link-item href=/docs/category/논문-정리>논문 정리</a><li class=footer__item><a class=footer__link-item href=/docs/category/강의-노트>강의 노트</a><li class=footer__item><a class=footer__link-item href=/docs/category/기술-학습>기술 학습</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>Records</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/blog>전체 회고</a><li class=footer__item><a class=footer__link-item href=/blog/tags/논문-발표>논문 발표</a><li class=footer__item><a class=footer__link-item href=/blog/tags/세미나>세미나</a><li class=footer__item><a class=footer__link-item href=/blog/tags/해커톤>해커톤</a><li class=footer__item><a class=footer__link-item href=/blog/tags/대외활동>대외활동</a></ul></div><div class="theme-layout-footer-column col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/>About</a><li class=footer__item><a href=/blog/rss.xml target=_blank rel="noopener noreferrer" class=footer__link-item>RSS<svg width=13.5 height=13.5 aria-label="(opens in new tab)" class=iconExternalLink_nPIU><use href=#theme-svg-external-link /></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>© 2026 이도근 (Lee Dokeun). Built with Docusaurus.</div></div></div></footer></div></body>
