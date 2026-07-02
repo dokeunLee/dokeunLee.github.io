@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pages: write
 
 concurrency:
   group: pages
@@ -19,6 +20,21 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Cancel stuck Pages deployment
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          STUCK_PAGES_DEPLOYMENT: 6365b7e1cddd09000a52b9d891452d3e1d712049
+        run: |
+          status=$(curl -sS -o /tmp/pages-cancel-response.txt -w "%{http_code}" -L -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages/deployments/${STUCK_PAGES_DEPLOYMENT}/cancel")
+          if [ "$status" != "204" ] && [ "$status" != "404" ]; then
+            cat /tmp/pages-cancel-response.txt
+            exit 1
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
